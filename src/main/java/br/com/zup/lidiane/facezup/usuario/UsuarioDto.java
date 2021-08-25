@@ -5,14 +5,13 @@ import javax.validation.constraints.NotBlank;
 
 public class UsuarioDto {
 
-    @NotBlank
+    @NotBlank(message = "{validacao.nome.usuario}")
     private String nome;
-    @NotBlank
+    @NotBlank(message = "{validacao.sobreNome.usuario}")
     private String sobreNome;
-    @Email
-    @NotBlank
+    @Email(message = "{validacao.email.usuario}")
     private String email;
-    @NotBlank
+    @NotBlank(message = "{validacao.cargo}")
     private String cargo;
 
     public UsuarioDto() {
