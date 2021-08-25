@@ -9,7 +9,7 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario cadastrarUusario(Usuario usuario){
+    public Usuario cadastrarUsario(Usuario usuario){
         return usuarioRepository.save( usuario );
     }
 }
