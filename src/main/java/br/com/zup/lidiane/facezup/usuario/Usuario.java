@@ -1,9 +1,9 @@
 package br.com.zup.lidiane.facezup.usuario;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import br.com.zup.lidiane.facezup.mensagem.Mensagem;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
@@ -19,6 +19,9 @@ public class Usuario {
     private String email;
     @Column(nullable = false, length = 50)
     private String cargo;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Mensagem> mensagens;
 
     public Usuario() {
     }
