@@ -16,9 +16,11 @@ public class UsuarioService {
         return usuarioRepository.save( usuario );
     }
 
-    public boolean contatoExistente(String id) {
+    public boolean usuarioExistente(String id) {
         return usuarioRepository.existsById(id);
     }
+
+
 
 
 }
