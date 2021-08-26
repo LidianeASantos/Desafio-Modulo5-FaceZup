@@ -11,7 +11,6 @@ public class Mensagem {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    @Column(nullable = false, length = 50)
     private Mensagem mensagem;
     @Column(nullable = false, length = 50)
     private String destino;
