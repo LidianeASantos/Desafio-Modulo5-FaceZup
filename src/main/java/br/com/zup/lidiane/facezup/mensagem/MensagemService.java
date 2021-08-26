@@ -14,7 +14,7 @@ public class MensagemService {
     @Autowired
     private UsuarioService usuarioService;
 
-    public Mensagem cadastrarMensagem(String id, Mensagem mensagem ){
+    public Mensagem cadastrarMensagem(String id, Mensagem mensagem){
         if (usuarioService.usuarioExistente( id )) {
             Usuario usuarioObjeto = usuarioService.buscarUsuarioPeloId( id );
 
@@ -23,4 +23,6 @@ public class MensagemService {
         }
         throw new RuntimeException("Usuário não encontrado");
     }
+
+
 }
