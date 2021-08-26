@@ -19,7 +19,7 @@ public class ConfiguracaoMensagemValidacao {
     }
 
     @Bean
-    public LocalValidatorFactoryBean validator(){
+    public LocalValidatorFactoryBean validator(MessageSource messageSource){
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource( messageSource() );
 
