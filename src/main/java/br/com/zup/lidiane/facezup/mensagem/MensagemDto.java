@@ -5,11 +5,11 @@ import javax.validation.constraints.NotBlank;
 
 public class MensagemDto {
 
-    @NotBlank
+    @NotBlank(message = "{validacao.mensagem.mensagemdto}")
     private String mensagem;
-    @Email
+    @Email(message = "{validacao.destino.mensagem}")
     private String destino;
-    @Email
+    @Email(message = "{validacao.origem.mensagem}")
     private String origem;
 
     public MensagemDto() {
