@@ -9,12 +9,15 @@ public class Mensagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
     @Column(nullable = false, length = 50)
-    private String mensagem;
+    private Mensagem mensagem;
     @Column(nullable = false, length = 50)
     private String destino;
     @Column(nullable = false, length = 50)
     private String origem;
+
 
     public Mensagem() {
     }
@@ -27,11 +30,11 @@ public class Mensagem {
         this.id = id;
     }
 
-    public String getMensagem() {
+    public Mensagem getMensagem() {
         return mensagem;
     }
 
-    public void setMensagem(String mensagem) {
+    public void setMensagem(Mensagem mensagem) {
         this.mensagem = mensagem;
     }
 
