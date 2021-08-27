@@ -1,12 +1,11 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 
 public class MensagemDto {
 
-    @NotBlank(message = "{validacao.mensagem.mensagemdto}")
-    private String mensagem;
+
+    private Mensagem mensagem;
     @Email(message = "{validacao.destino.mensagem}")
     private String destino;
     @Email(message = "{validacao.origem.mensagem}")
@@ -15,11 +14,11 @@ public class MensagemDto {
     public MensagemDto() {
     }
 
-    public String getMensagem() {
+    public Mensagem getMensagem() {
         return mensagem;
     }
 
-    public void setMensagem(String mensagem) {
+    public void setMensagem(Mensagem mensagem) {
         this.mensagem = mensagem;
     }
 
