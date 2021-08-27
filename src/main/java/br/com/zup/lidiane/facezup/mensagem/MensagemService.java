@@ -14,15 +14,23 @@ public class MensagemService {
     @Autowired
     private UsuarioService usuarioService;
 
-    public Mensagem cadastrarMensagem(String id, Mensagem mensagem){
-        if (usuarioService.usuarioExistente( id )) {
-            Usuario usuarioObjeto = usuarioService.buscarUsuarioPeloId( id );
+    public void cadastrarMensagem(String emailOrigem, String emailDestino, Mensagem mensagem) {
+        Mensagem novaMensagem = new Mensagem();
 
-            usuarioService.cadastrarUsario( usuarioObjeto );
-            return mensagem;
+        if (usuarioService.usuarioExistente( emailOrigem ) & usuarioService.usuarioExistente( emailDestino )) {
+            Usuario usuarioOrigem = usuarioService.buscarUsuarioPeloId( emailOrigem );
+            novaMensagem.setOrigem( emailOrigem );
+
+            Usuario usuarioDestino = usuarioService.buscarUsuarioPeloId( emailDestino );
+            novaMensagem.setDestino( emailDestino );
+            novaMensagem.setMensagem( mensagem );
+            novaMensagem.setVisualizado( false );
+
+            mensagemRepository.save( novaMensagem );
         }
-        throw new RuntimeException("Usuário não encontrado");
+        throw new RuntimeException( "Usuário não encontrado!" );
     }
 
 
-}
+
+    }
