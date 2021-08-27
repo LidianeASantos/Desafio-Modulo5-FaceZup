@@ -1,5 +1,7 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
+import br.com.zup.lidiane.facezup.usuario.Usuario;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,8 @@ public class Mensagem {
     private String destino;
     @Column(nullable = false, length = 50)
     private String origem;
+    @Column(nullable = false)
+    private Boolean visualizado;
 
 
     public Mensagem() {
@@ -51,5 +55,13 @@ public class Mensagem {
 
     public void setOrigem(String origem) {
         this.origem = origem;
+    }
+
+    public Boolean getVisualizado() {
+        return visualizado;
+    }
+
+    public void setVisualizado(Boolean visualizado) {
+        this.visualizado = visualizado;
     }
 }
