@@ -1,24 +1,26 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class MensagemDto {
 
-
-    private Mensagem mensagem;
+    @NotBlank
+    private String mensagem;
     @Email(message = "{validacao.destino.mensagem}")
     private String destino;
     @Email(message = "{validacao.origem.mensagem}")
     private String origem;
 
+
     public MensagemDto() {
     }
 
-    public Mensagem getMensagem() {
+    public String getMensagem() {
         return mensagem;
     }
 
-    public void setMensagem(Mensagem mensagem) {
+    public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
 
