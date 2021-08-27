@@ -14,15 +14,15 @@ public class MensagemService {
     @Autowired
     private UsuarioService usuarioService;
 
-    public void cadastrarMensagem(String emailOrigem, String emailDestino, Mensagem mensagem) {
+    public void cadastrarMensagem(String origem, String destino, String mensagem) {
         Mensagem novaMensagem = new Mensagem();
 
-        if (usuarioService.usuarioExistente( emailOrigem ) & usuarioService.usuarioExistente( emailDestino )) {
-            Usuario usuarioOrigem = usuarioService.buscarUsuarioPeloId( emailOrigem );
-            novaMensagem.setOrigem( emailOrigem );
+        if (usuarioService.usuarioExistente( origem ) & usuarioService.usuarioExistente( destino )) {
+            Usuario usuarioOrigem = usuarioService.buscarUsuarioPeloId( origem );
+            novaMensagem.setOrigem( origem );
 
-            Usuario usuarioDestino = usuarioService.buscarUsuarioPeloId( emailDestino );
-            novaMensagem.setDestino( emailDestino );
+            Usuario usuarioDestino = usuarioService.buscarUsuarioPeloId( destino );
+            novaMensagem.setDestino( destino );
             novaMensagem.setMensagem( mensagem );
             novaMensagem.setVisualizado( false );
 
