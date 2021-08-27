@@ -8,18 +8,22 @@ import javax.persistence.*;
 @Table(name = "mensagens")
 public class Mensagem {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Mensagem mensagem;
+    @Column(nullable = false)
+    private String mensagem;
     @Column(nullable = false, length = 50)
     private String destino;
     @Column(nullable = false, length = 50)
     private String origem;
     @Column(nullable = false)
     private Boolean visualizado;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario", nullable = false)
+    private Usuario usuario;
 
 
     public Mensagem() {
@@ -33,24 +37,33 @@ public class Mensagem {
         this.id = id;
     }
 
-    public Mensagem getMensagem() {
+    public String getMensagem() {
         return mensagem;
     }
 
-    public void setMensagem(Mensagem mensagem) {
+    public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
-
     public String getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
 
     public String getOrigem() {
         return origem;
+    }
+
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
     }
 
     public void setOrigem(String origem) {
