@@ -6,8 +6,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
+
 
 
     @Column(nullable = false, length = 50)
@@ -19,6 +20,7 @@ public class Usuario {
     private String email;
     @Column(nullable = false, length = 50)
     private String cargo;
+
 
     @OneToMany(mappedBy = "usuario")
     private List<Mensagem> mensagens;
