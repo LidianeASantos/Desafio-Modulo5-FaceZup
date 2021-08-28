@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 
 @RestController
 @RequestMapping("/usuarios")
@@ -21,10 +19,10 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario cadastrarUsuario(@RequestBody @Valid UsuarioDto usuarioDTO){
-        Usuario usuarioModel = modelMapper.map(usuarioDTO, Usuario.class);
+    public UsuarioDto cadastrarUsuario(@RequestBody Usuario usuarioDTO){
+        Usuario usuario = usuarioService.cadastrarUsario(usuarioDTO);
 
-       return this.usuarioService.cadastrarUsario( usuarioModel );
+       return modelMapper.map( usuario, UsuarioDto.class );
 
     }
 
