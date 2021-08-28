@@ -18,8 +18,10 @@ public class MensagemController {
     private ModelMapper modelMapper;
 
     @PostMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void cadastrarMensagem(@RequestBody @Valid MensagemDto mensagemDto){
-        mensagemService.cadastrarMensagem(mensagemDto.getOrigem(), mensagemDto.getDestino(), mensagemDto.getMensagem());
+    @ResponseStatus(HttpStatus.CREATED)
+    public MensagemDto cadastrarMensagem(@RequestBody @Valid MensagemDto mensagemDto){
+        mensagemService.cadastrarMensagem( mensagemDto.getOrigem(), mensagemDto.getDestino(), mensagemDto.getMensagem() );
+
+        return mensagemDto;
     }
 }
