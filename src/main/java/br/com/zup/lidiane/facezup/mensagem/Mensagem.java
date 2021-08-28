@@ -1,28 +1,34 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
 import br.com.zup.lidiane.facezup.usuario.Usuario;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "mensagens")
+@Table(name = "MENSAGEM")
+@JsonInclude
 public class Mensagem {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(nullable = false)
     private String mensagem;
+
     @Column(nullable = false, length = 50)
     private String destino;
+
     @Column(nullable = false, length = 50)
     private String origem;
+
     @Column(nullable = false)
     private Boolean visualizado;
 
+
     @ManyToOne
-    @JoinColumn(name = "usuario", nullable = false)
+    @JoinColumn(name = "email_id")
     private Usuario usuario;
 
 
@@ -44,26 +50,17 @@ public class Mensagem {
     public void setMensagem(String mensagem) {
         this.mensagem = mensagem;
     }
+
     public String getDestino() {
         return destino;
     }
 
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
 
     public String getOrigem() {
         return origem;
-    }
-
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
     }
 
     public void setOrigem(String origem) {
@@ -76,5 +73,13 @@ public class Mensagem {
 
     public void setVisualizado(Boolean visualizado) {
         this.visualizado = visualizado;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
