@@ -17,12 +17,13 @@ public class UsuarioService {
         return usuarioRepository.save( usuario );
     }
 
-    public boolean usuarioExistente(String id) {
-        return usuarioRepository.existsById(id);
+    public boolean usuarioExistente(String email) {
+        return usuarioRepository.existsById(email);
     }
 
-    public Usuario buscarUsuarioPeloId(String id){
-        Optional<Usuario> contatoOptional = usuarioRepository.findById(id);
+    public Usuario buscarUsuarioPeloId(String email){
+
+        Optional<Usuario> contatoOptional = usuarioRepository.findById(email );
 
         if(contatoOptional.isPresent()){
             return contatoOptional.get();
