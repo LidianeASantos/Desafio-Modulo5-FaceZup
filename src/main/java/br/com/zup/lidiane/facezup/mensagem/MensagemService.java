@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -39,6 +40,16 @@ public class MensagemService {
     public int pesquisarQuantidadeMensagemNãoLida(String emailUsuario){
         usuarioService.usuarioExistente( emailUsuario );
         return mensagemRepository.countAllByVisualizadoFalseAndDestinoUsuarioEmail( emailUsuario );
+    }
+
+    public Mensagem pesquisarMensagemPorId(Long id){
+
+        Optional<Mensagem> mensagemOptional = mensagemRepository.findById(id);
+
+        if(mensagemOptional.isPresent()){
+            return mensagemOptional.get();
+        }
+        throw new RuntimeException("Mensagem nao encontrada!");
     }
 
 
