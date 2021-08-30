@@ -1,8 +1,11 @@
 package br.com.zup.lidiane.facezup.usuario;
 
+import br.com.zup.lidiane.facezup.mensagem.Mensagem;
+import br.com.zup.lidiane.facezup.mensagem.MensagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -11,6 +14,9 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private MensagemService mensagemService;
 
     public Usuario cadastrarUsario(Usuario usuario) {
         return usuarioRepository.save( usuario );
@@ -29,6 +35,10 @@ public class UsuarioService {
         }
         throw new RuntimeException( "Usuário não encontrado!" );
 
+    }
+
+    public List<Mensagem> pesquisarMensagemNãoLida(String emailUsuario){
+        return mensagemService.pesquisarMensagemNaoLida( emailUsuario );
     }
 
 
