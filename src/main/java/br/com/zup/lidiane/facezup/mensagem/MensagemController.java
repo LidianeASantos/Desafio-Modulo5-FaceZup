@@ -17,11 +17,17 @@ public class MensagemController {
     @Autowired
     private ModelMapper modelMapper;
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public MensagemDto cadastrarMensagem(@RequestBody @Valid MensagemDto mensagemDto){
-        mensagemService.cadastrarMensagem( mensagemDto.getOrigem(), mensagemDto.getDestino(), mensagemDto.getMensagem() );
 
-        return mensagemDto;
+    @PostMapping("/{email_id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public MensagemDto cadastrarMensagemTeste(@RequestBody @Valid MensagemDto mensagemDto, @PathVariable String email_id ) {
+
+        Mensagem mensagem = mensagemDto.converterDTOParaModel();
+        mensagemService.cadastrarMensagem( email_id , mensagem );
+        return MensagemDto.converterModelParaDTO(mensagem);
+
+
     }
+
+
 }
