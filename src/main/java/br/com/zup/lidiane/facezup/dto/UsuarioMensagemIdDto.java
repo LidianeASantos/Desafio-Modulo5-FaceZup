@@ -1,11 +1,13 @@
 package br.com.zup.lidiane.facezup.dto;
 
+import br.com.zup.lidiane.facezup.usuario.Usuario;
+
+
 public class UsuarioMensagemIdDto {
 
     private Long id;
 
-    public UsuarioMensagemIdDto(Long id) {
-        this.id = id;
+    public UsuarioMensagemIdDto() {
     }
 
     public Long getId() {
@@ -15,4 +17,13 @@ public class UsuarioMensagemIdDto {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public static UsuarioMensagemIdDto converterModelParaDto(Usuario usuario){
+        UsuarioMensagemIdDto usuarioMensagemIdDto = new UsuarioMensagemIdDto();
+        usuarioMensagemIdDto.setId( usuarioMensagemIdDto.getId() );
+        return usuarioMensagemIdDto;
+
+
+    }
+
 }
