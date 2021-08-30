@@ -52,5 +52,13 @@ public class MensagemService {
         throw new RuntimeException("Mensagem nao encontrada!");
     }
 
+    public Mensagem visualizarMensagemPorId(Long id){
+        Mensagem mensagem = pesquisarMensagemPorId(id);
+
+        mensagem.setVisualizado(true);
+        mensagemRepository.save(mensagem);
+        return mensagem;
+    }
+
 
 }
