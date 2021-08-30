@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Service
@@ -27,6 +28,12 @@ public class MensagemService {
         mensagem.setVisualizado( false );
 
         return mensagemRepository.save( mensagem );
+    }
+
+    public List<Mensagem> pesquisarMensagemNaoLida(String emailUsuario){
+        usuarioService.usuarioExistente( emailUsuario );
+
+        return mensagemRepository.findAllByVizualizadoFalseAndDestinoUsuarioemail( emailUsuario );
     }
 
 
