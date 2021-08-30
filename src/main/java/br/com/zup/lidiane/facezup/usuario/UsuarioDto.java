@@ -48,4 +48,13 @@ public class UsuarioDto {
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
+    public static UsuarioDto converterModelParaDTO(Usuario usuario){
+        UsuarioDto usuarioDto = new UsuarioDto();
+        usuarioDto.setEmail(usuario.getEmail());
+        usuarioDto.setNome(usuario.getNome());
+        usuarioDto.setSobreNome(usuario.getSobreNome());
+        usuarioDto.setCargo( usuario.getCargo() );
+        return usuarioDto;
+    }
 }
