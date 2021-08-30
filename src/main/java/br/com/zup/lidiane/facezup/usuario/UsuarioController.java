@@ -1,9 +1,16 @@
 package br.com.zup.lidiane.facezup.usuario;
 
+import br.com.zup.lidiane.facezup.dto.MensagemIdDto;
+import br.com.zup.lidiane.facezup.dto.UsuarioMensagemIdDto;
+import br.com.zup.lidiane.facezup.mensagem.Mensagem;
+import br.com.zup.lidiane.facezup.mensagem.MensagemDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 
 @RestController
@@ -16,6 +23,7 @@ public class UsuarioController {
     @Autowired
     private ModelMapper modelMapper;
 
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioDto cadastrarUsuario(@RequestBody Usuario usuarioDTO){
@@ -24,5 +32,8 @@ public class UsuarioController {
        return modelMapper.map( usuario, UsuarioDto.class );
 
     }
+
+
+
 
 }
