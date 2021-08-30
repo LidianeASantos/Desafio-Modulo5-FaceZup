@@ -16,7 +16,6 @@ public class UsuarioController {
     @Autowired
     private ModelMapper modelMapper;
 
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public UsuarioDto cadastrarUsuario(@RequestBody Usuario usuarioDTO){
@@ -25,7 +24,5 @@ public class UsuarioController {
        return modelMapper.map( usuario, UsuarioDto.class );
 
     }
-
-
 
 }
