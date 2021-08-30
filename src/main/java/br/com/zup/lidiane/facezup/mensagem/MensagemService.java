@@ -36,5 +36,10 @@ public class MensagemService {
         return mensagemRepository.findAllByVizualizadoFalseAndDestinoUsuarioemail( emailUsuario );
     }
 
+    public int pesquisarQuantidadeMensagemNãoLida(String emailUsuario){
+        usuarioService.usuarioExistente( emailUsuario );
+        return mensagemRepository.countAllByVisualizadoFalseAndDestinoUsuarioEmail( emailUsuario );
+    }
+
 
 }
