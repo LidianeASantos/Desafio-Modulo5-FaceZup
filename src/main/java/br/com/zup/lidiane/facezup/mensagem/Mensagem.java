@@ -7,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "MENSAGEM")
-@JsonInclude
 public class Mensagem {
 
     @Id
@@ -26,11 +25,18 @@ public class Mensagem {
     @Column(nullable = false)
     private Boolean visualizado;
 
-
     @ManyToOne
     @JoinColumn(name = "email_id")
     private Usuario usuario;
 
+    public Mensagem(Long id, String mensagem, String origem, String destino, Boolean visualizado, Usuario usuario) {
+        this.id = id;
+        this.mensagem = mensagem;
+        this.origem = origem;
+        this.destino = destino;
+        this.visualizado = visualizado;
+        this.usuario = usuario;
+    }
 
     public Mensagem() {
     }
@@ -51,14 +57,6 @@ public class Mensagem {
         this.mensagem = mensagem;
     }
 
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
     public String getOrigem() {
         return origem;
     }
@@ -67,12 +65,25 @@ public class Mensagem {
         this.origem = origem;
     }
 
-    public Boolean getVisualizado() {
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+    public Boolean isVisualizado() {
         return visualizado;
     }
 
     public void setVisualizado(Boolean visualizado) {
         this.visualizado = visualizado;
+
+    }
+
+    public Boolean getVisualizado() {
+        return visualizado;
     }
 
     public Usuario getUsuario() {
