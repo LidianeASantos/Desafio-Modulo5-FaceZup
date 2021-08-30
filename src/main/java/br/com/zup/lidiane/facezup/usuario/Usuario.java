@@ -24,10 +24,21 @@ public class Usuario {
     @Column(nullable = false, length = 50)
     private String cargo;
 
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @OneToMany(mappedBy = "usuario")
     private List<Mensagem> mensagens;
 
+    public Usuario(String email, String nome, String sobreNome, String cargo, List<Mensagem> mensagens) {
+        this.email = email;
+        this.nome = nome;
+        this.sobreNome = sobreNome;
+        this.cargo = cargo;
+        this.mensagens = mensagens;
+    }
+
+    public Usuario() {
+    }
 
     public String getEmail() {
         return email;
