@@ -1,5 +1,6 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
+import br.com.zup.lidiane.facezup.exceptions.MensagemNaoEncontradaException;
 import br.com.zup.lidiane.facezup.usuario.Usuario;
 import br.com.zup.lidiane.facezup.usuario.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class MensagemService {
         if (mensagemOptional.isPresent()) {
             return mensagemOptional.get();
         }
-        throw new RuntimeException( "Mensagem não encontrada!" );
+        throw new MensagemNaoEncontradaException( "Mensagem não encontrada!" );
     }
 
 

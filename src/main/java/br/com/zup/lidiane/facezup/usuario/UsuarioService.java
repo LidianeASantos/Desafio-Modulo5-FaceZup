@@ -1,5 +1,6 @@
 package br.com.zup.lidiane.facezup.usuario;
 
+import br.com.zup.lidiane.facezup.exceptions.UsuarioNaoEncontradoException;
 import br.com.zup.lidiane.facezup.mensagem.MensagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class UsuarioService {
         if (usuarioOptional.isPresent()) {
             return usuarioOptional.get();
         }
-        throw new RuntimeException( "Usuário não encontrado!" );
+        throw new UsuarioNaoEncontradoException( "Usuário não encontrado!" );
 
     }
 
