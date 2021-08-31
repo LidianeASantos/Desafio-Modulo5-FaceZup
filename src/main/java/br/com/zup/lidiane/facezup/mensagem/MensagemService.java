@@ -34,9 +34,7 @@ public class MensagemService {
 
     }
 
-
-
-    public Mensagem pesquisarMensagemPorId(String id) {
+    public Mensagem pesquisarMensagemPorId(Long id) {
 
         Optional<Mensagem> mensagemOptional = mensagemRepository.findById( id );
 
