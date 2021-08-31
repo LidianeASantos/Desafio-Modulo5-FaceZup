@@ -1,14 +1,10 @@
 package br.com.zup.lidiane.facezup.mensagem;
 
 import br.com.zup.lidiane.facezup.usuario.Usuario;
-import br.com.zup.lidiane.facezup.usuario.UsuarioRepository;
 import br.com.zup.lidiane.facezup.usuario.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Valid;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Optional;
 
 
@@ -25,40 +21,32 @@ public class MensagemService {
 
         Usuario usuario = usuarioService.buscarUsuarioPeloId( email );
 
-        mensagem.setUsuario(usuario);
+        mensagem.setUsuario( usuario );
         mensagem.setVisualizado( false );
 
         return mensagemRepository.save( mensagem );
     }
 
-    public List<Mensagem> pesquisarMensagemNaoLida(String emailUsuario){
-        usuarioService.usuarioExistente( emailUsuario );
+    public long pesquisarMensagemNaoLida(String email) {
 
-        return mensagemRepository.findAllByVizualizadoFalseAndDestinoUsuarioemail( emailUsuario );
+
+            return mensagemRepository.countByVisualizadoAndDestino( false, email );
+
+
     }
 
-    public int pesquisarQuantidadeMensagemNãoLida(String emailUsuario){
-        usuarioService.usuarioExistente( emailUsuario );
-        return mensagemRepository.countAllByVisualizadoFalseAndDestinoUsuarioEmail( emailUsuario );
-    }
 
-    public Mensagem pesquisarMensagemPorId(Long id){
 
-        Optional<Mensagem> mensagemOptional = mensagemRepository.findById(id);
+    public Mensagem pesquisarMensagemPorId(String id) {
 
-        if(mensagemOptional.isPresent()){
+        Optional<Mensagem> mensagemOptional = mensagemRepository.findById( id );
+
+        if (mensagemOptional.isPresent()) {
             return mensagemOptional.get();
         }
-        throw new RuntimeException("Mensagem nao encontrada!");
+        throw new RuntimeException( "Mensagem não encontrada!" );
     }
 
-    public Mensagem visualizarMensagemPorId(Long id){
-        Mensagem mensagem = pesquisarMensagemPorId(id);
-
-        mensagem.setVisualizado(true);
-        mensagemRepository.save(mensagem);
-        return mensagem;
-    }
 
 
 }
