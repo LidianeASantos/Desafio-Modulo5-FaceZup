@@ -12,11 +12,14 @@ import javax.validation.Valid;
 @RequestMapping("/chat")
 public class MensagemController {
 
-    @Autowired
     private MensagemService mensagemService;
+    private ModelMapper modelMapper;
 
     @Autowired
-    private ModelMapper modelMapper;
+    public MensagemController(MensagemService mensagemService, ModelMapper modelMapper){
+        this.mensagemService = mensagemService;
+        this.modelMapper = modelMapper;
+    }
 
 
     @PostMapping("/{email_id}")
