@@ -41,7 +41,7 @@ public class MensagemController {
     }
 
     @GetMapping("/{mensagemId}")
-    public MensagemIdDto visualizarMensagem(@PathVariable(name = "mensagemId") String id){
+    public MensagemIdDto visualizarMensagem(@PathVariable(name = "mensagemId") Long id){
        Mensagem mensagem = mensagemService.pesquisarMensagemPorId(id);
         return modelMapper.map(mensagem, MensagemIdDto.class);
     }
