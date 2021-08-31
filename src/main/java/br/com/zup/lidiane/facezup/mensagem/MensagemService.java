@@ -10,15 +10,10 @@ import java.util.Optional;
 
 @Service
 public class MensagemService {
-
-    private MensagemRepository mensagemRepository;
-    private UsuarioService usuarioService;
-
     @Autowired
-    public MensagemService(MensagemRepository mensagemRepository, UsuarioService usuarioService){
-        this.mensagemRepository = mensagemRepository;
-        this.usuarioService = usuarioService;
-    }
+    private MensagemRepository mensagemRepository;
+    @Autowired
+    private UsuarioService usuarioService;
 
 
     public Mensagem cadastrarMensagem(String email, Mensagem mensagem) {

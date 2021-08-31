@@ -9,14 +9,11 @@ import java.util.Optional;
 @Service
 public class UsuarioService {
 
+    @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
     private MensagemService mensagemService;
 
-    @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository, MensagemService mensagemService){
-        this.usuarioRepository = usuarioRepository;
-        this.mensagemService = mensagemService;
-    }
 
     public Usuario cadastrarUsario(Usuario usuario) {
         return usuarioRepository.save(usuario);
