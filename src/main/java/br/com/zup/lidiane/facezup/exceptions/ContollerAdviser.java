@@ -12,7 +12,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestControllerAdvice public class ContollerAdviser {
+@RestControllerAdvice
+public class ContollerAdviser {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
